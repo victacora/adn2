@@ -1,0 +1,9 @@
+# Routes
+
+GET    /                     co.com.adnII.controllers.HomeController.index
+
+GET    /api/v1/companies                     co.com.adnII.controllers.CompanyController.list
+
+POST   /api/v1/companies                     co.com.adnII.controllers.CompanyController.create
+
+GET    /api/v1/companies/:id                 co.com.adnII.controllers.CompanyController.find(id)
