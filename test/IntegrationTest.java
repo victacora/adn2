@@ -13,14 +13,13 @@ import play.test.WithApplication;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static play.mvc.Http.HttpVerbs.PUT;
 import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.*;
 
 
 public class IntegrationTest extends WithApplication {
 
-    public static final String URL_API = "/api/v1/companies/";
+    public static final String URL_API = "/api/v1/companies";
 
     @Override
     protected Application provideApplication() {
@@ -31,13 +30,13 @@ public class IntegrationTest extends WithApplication {
     public void listCompanies() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri("/api/v1/companies");
+                .uri(URL_API);
 
         Result result = route(app, request);
         final String body = contentAsString(result);
-        JsonNode array=Json.parse(body);
+        JsonNode array = Json.parse(body);
         assertTrue(array.isArray());
-        assertTrue(array.size()>0);
+        assertTrue(array.size() > 0);
         assertEquals(OK, result.status());
     }
 
@@ -45,24 +44,23 @@ public class IntegrationTest extends WithApplication {
     public void findCompany() {
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(GET)
-                .uri(URL_API + "1");
+                .uri(URL_API + "/1");
 
         Result result = route(app, request);
         final String body = contentAsString(result);
-        JsonNode object=Json.parse(body);
-        assertTrue(object.isObject());
-        assertTrue(object.has("id"));
-        assertTrue(object.has("nit"));
-        assertTrue(object.has("name"));
-        assertTrue(object.has("email"));
-        assertTrue(object.has("phone_number"));
-        assertTrue(object.size()==1);
+        JsonNode object = Json.parse(body);
+        assertTrue(object.isObject() &&
+                object.has("id") &&
+                object.has("nit") &&
+                object.has("name") &&
+                object.has("email") &&
+                object.has("phone_number"));
         assertEquals(OK, result.status());
     }
 
     @Test
     public void createCompany() {
-        JsonNode json = Json.toJson(new CompanyDTO(2l,"900.022.972-4","Empresa SAS","8564545","empresa_info@empresa.com.co"));
+        JsonNode json = Json.toJson(new CompanyDTO(2l, "900.022.972-4", "Empresa SAS", "55555555", "empresa_info@empresa.com.co"));
 
         Http.RequestBuilder request = new Http.RequestBuilder()
                 .method(POST)
