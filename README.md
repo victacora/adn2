@@ -1,53 +1,25 @@
-[<img src="https://img.shields.io/travis/playframework/play-java-starter-example.svg"/>](https://travis-ci.org/playframework/play-java-starter-example)
+## 1) Construir un backend en play framework 2.6
+que exponga servicios rest de un crear y leer empresa
 
-# play-java-starter-example
+## 2) Arquitectura hexagonal
+patrones tacticos de ddd (service domain, entity, repository, factory, domain event)
 
-This is a starter application that shows how Play works.  Please see the documentation at https://www.playframework.com/documentation/latest/Home for more details.
+## 3) Usando cqrs
 
-## Running
+## 4) Un frontend en angular 6 que permita administrar
+el crud y con las buenas practicas descritas en el capitulo
+de angular
 
-Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project from http://www.playframework.com/download then you'll find a prepackaged version of sbt in the project directory:
+## 5) Usando jdbi para persistencia
 
-```
-sbt run
-```
+## 6) Desplegado en un contenedor docker
 
-And then go to http://localhost:9000 to see the running web application.
 
-## Controllers
+## Notas:
+* Con pruebas unitarias (Junit, mockito)
+* Funcionales (Protractor)
+* Carga (Jmeter 15 usuarios concurrentes y no debe superar los
+2 segundos en promedio)
+* aplicando SOLID y buenas practica de codigo
 
-There are several demonstration files available in this template.
-
-- `HomeController.java`:
-
-  Shows how to handle simple HTTP requests.
-
-- `AsyncController.java`:
-
-  Shows how to do asynchronous programming when handling a request.
-
-- `CountController.java`:
-
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
-
-## Components
-
-- `Module.java`:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- `Counter.java`:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- `ApplicationTimer.java`:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-## Filters
-
-- `ExampleFilter.java`:
-
-  A simple filter that adds a header to every response.
+## Se considerará como un plus si se publican los eventos de dominio en exchanges de rabbitmq instalado localmente con una imagen de docker de docker hub"
