@@ -1,4 +1,3 @@
-import co.com.adnII.application.dto.command.CompanyCreateCommandDTO;
 import co.com.adnII.application.service.command.ICompanyCommandService;
 import co.com.adnII.application.service.impl.command.CompanyCommandService;
 import co.com.adnII.application.service.impl.query.CompanyQueryService;
@@ -23,7 +22,7 @@ public class Module extends AbstractModule {
     @Override
     public void configure() {
 
-        // bind(CompanyRepository.class).to(JPACompanyRepository.class).asEagerSingleton();
+        //bind(CompanyRepository.class).to(JPACompanyRepository.class).asEagerSingleton();
         bind(CompanyRepository.class).to(JDBICompanyRepository.class).asEagerSingleton();
         bind(ICompanyCommandService.class).to(CompanyCommandService.class);
         bind(ICompanyQueryService.class).to(CompanyQueryService.class);

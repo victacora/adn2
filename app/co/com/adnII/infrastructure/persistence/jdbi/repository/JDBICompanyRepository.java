@@ -4,13 +4,14 @@ import co.com.adnII.domain.entities.Company;
 import co.com.adnII.domain.repository.CompanyRepository;
 import co.com.adnII.infrastructure.persistence.jdbi.context.CompanyExecutionContext;
 import co.com.adnII.infrastructure.persistence.jdbi.mapper.CompanyMapper;
-import org.skife.jdbi.v2.*;
+import org.skife.jdbi.v2.DBI;
+import org.skife.jdbi.v2.Query;
+import org.skife.jdbi.v2.TransactionCallback;
+import org.skife.jdbi.v2.Update;
 import org.skife.jdbi.v2.tweak.HandleCallback;
-
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Stream;
 

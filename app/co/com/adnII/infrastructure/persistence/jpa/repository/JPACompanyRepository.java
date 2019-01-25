@@ -31,7 +31,7 @@ public class JPACompanyRepository implements CompanyRepository {
 
     @Override
     public CompletionStage<Stream<Company>> list() {
-        return supplyAsync(() -> select(jpaApi.em()), ec);
+        return supplyAsync(() ->wrapTransaction(em -> select(em)), ec);
     }
 
     @Override

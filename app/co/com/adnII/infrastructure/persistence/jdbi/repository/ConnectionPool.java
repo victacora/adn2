@@ -1,8 +1,8 @@
 package co.com.adnII.infrastructure.persistence.jdbi.repository;
 
+import com.typesafe.config.Config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import com.typesafe.config.Config;
 
 import javax.inject.Inject;
 
