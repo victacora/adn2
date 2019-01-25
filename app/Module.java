@@ -4,6 +4,7 @@ import co.com.adnII.application.service.impl.command.CompanyCommandService;
 import co.com.adnII.application.service.impl.query.CompanyQueryService;
 import co.com.adnII.application.service.query.ICompanyQueryService;
 import co.com.adnII.domain.repository.CompanyRepository;
+import co.com.adnII.infrastructure.persistence.jdbi.repository.JDBICompanyRepository;
 import co.com.adnII.infrastructure.persistence.jpa.repository.JPACompanyRepository;
 import com.google.inject.AbstractModule;
 
@@ -22,7 +23,8 @@ public class Module extends AbstractModule {
     @Override
     public void configure() {
 
-        bind(CompanyRepository.class).to(JPACompanyRepository.class).asEagerSingleton();
+        // bind(CompanyRepository.class).to(JPACompanyRepository.class).asEagerSingleton();
+        bind(CompanyRepository.class).to(JDBICompanyRepository.class).asEagerSingleton();
         bind(ICompanyCommandService.class).to(CompanyCommandService.class);
         bind(ICompanyQueryService.class).to(CompanyQueryService.class);
 

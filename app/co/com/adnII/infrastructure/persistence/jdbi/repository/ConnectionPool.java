@@ -18,11 +18,13 @@ public class ConnectionPool {
 
     public HikariDataSource getDataSource() {
         HikariConfig jdbcConfig = new HikariConfig();
-        jdbcConfig.setMaximumPoolSize(conf.getInt("db.default.hikaricp.maximumPoolSize"));
-        jdbcConfig.setMinimumIdle(conf.getInt("db.default.hikaricp.minimumIdle"));
-        jdbcConfig.setJdbcUrl(conf.getString("db.default.jdbcUrl"));
-        jdbcConfig.setUsername(conf.getString("db.default.username"));
-        jdbcConfig.setPassword(conf.getString("db.default.password"));
+        Config bdConf=conf.getConfig("db.default");
+        Config hikaricpConf=conf.getConfig("db.default.hikaricp");
+        jdbcConfig.setMaximumPoolSize(hikaricpConf.getInt("maximumPoolSize"));
+        jdbcConfig.setMinimumIdle(hikaricpConf.getInt("minimumIdle"));
+        jdbcConfig.setJdbcUrl(bdConf.getString("url"));
+        jdbcConfig.setUsername(bdConf.getString("username"));
+        jdbcConfig.setPassword(bdConf.getString("password"));
         return new HikariDataSource(jdbcConfig);
     }
 

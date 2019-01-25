@@ -26,7 +26,7 @@ dependencies {
     play "com.typesafe.play:play-logback_$scalaVersion:$playVersion"
     play "com.typesafe.play:play-java-jpa_$scalaVersion:$playVersion"
     play "mysql:mysql-connector-java:8.0.13"
-
+    play "org.jdbi:jdbi:2.78"
     play "org.hibernate:hibernate-core:5.2.9.Final"
     play "com.palominolabs.http:url-builder:1.1.0"
     play "net.jodah:failsafe:1.0.3"

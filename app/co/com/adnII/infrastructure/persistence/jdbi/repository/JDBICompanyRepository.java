@@ -3,6 +3,7 @@ package co.com.adnII.infrastructure.persistence.jdbi.repository;
 import co.com.adnII.domain.entities.Company;
 import co.com.adnII.domain.repository.CompanyRepository;
 import co.com.adnII.infrastructure.persistence.jdbi.context.CompanyExecutionContext;
+import co.com.adnII.infrastructure.persistence.jdbi.mapper.CompanyMapper;
 import org.skife.jdbi.v2.*;
 import org.skife.jdbi.v2.tweak.HandleCallback;
 
@@ -49,7 +50,7 @@ public class JDBICompanyRepository implements CompanyRepository {
     private HandleCallback<Stream<Company>> select() {
         return (conn) -> {
             Query query = conn.createQuery("SELECT id,nit,name,phone_number,email FROM company");
-            return query.mapTo(Company.class).list().stream();
+            return query.map(new CompanyMapper()).list().stream();
         };
     }
 
