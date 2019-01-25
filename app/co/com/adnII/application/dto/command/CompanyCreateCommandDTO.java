@@ -1,49 +1,27 @@
-package co.com.adnII.dto;
+package co.com.adnII.application.dto.command;
 
-import co.com.adnII.model.entities.Company;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class CompanyDTO {
+public class CompanyCreateCommandDTO {
 
-    private Long id;
-    @JsonProperty("nit")
     private String nit;
-    @JsonProperty("name")
     private String name;
     @JsonProperty("phone_number")
     private String phoneNumber;
     private String email;
-    private String link;
 
-    public CompanyDTO(){
+    public CompanyCreateCommandDTO(){
 
     }
 
-    public CompanyDTO(Long id, String nit,String name,String phoneNumber,String email){
-        this.id = id;
+    public CompanyCreateCommandDTO(String nit, String name, String phoneNumber, String email){
         this.nit = nit;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
 
-    public CompanyDTO(Company data, String link) {
-        this.id = data.getId();
-        this.nit = data.getName();
-        this.name = data.getNit();
-        this.phoneNumber = data.getPhoneNumber();
-        this.email = data.getEmail();
-        this.link = link;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNit() {
         return nit;
@@ -77,11 +55,4 @@ public class CompanyDTO {
         this.email = email;
     }
 
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
 }

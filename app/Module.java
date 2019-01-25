@@ -1,5 +1,5 @@
-import co.com.adnII.model.repository.CompanyRepository;
-import co.com.adnII.model.repository.JPACompanyRepository;
+import co.com.adnII.domain.repository.CompanyRepository;
+import co.com.adnII.infrastructure.persistence.jpa.repository.JPACompanyRepository;
 import com.google.inject.AbstractModule;
 
 /**

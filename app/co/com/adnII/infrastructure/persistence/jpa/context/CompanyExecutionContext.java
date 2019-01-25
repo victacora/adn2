@@ -1,4 +1,4 @@
-package co.com.adnII.model.context;
+package co.com.adnII.infrastructure.persistence.jpa.context;
 
 import akka.actor.ActorSystem;
 import play.libs.concurrent.CustomExecutionContext;

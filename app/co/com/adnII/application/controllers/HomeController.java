@@ -1,4 +1,4 @@
-package co.com.adnII.controllers;
+package co.com.adnII.application.controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;

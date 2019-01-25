@@ -1,20 +1,19 @@
-package co.com.adnII.model.repository;
+package co.com.adnII.infrastructure.persistence.jpa.repository;
 
-import co.com.adnII.model.context.CompanyExecutionContext;
-import co.com.adnII.model.entities.Company;
-import net.jodah.failsafe.CircuitBreaker;
-import net.jodah.failsafe.Failsafe;
+import co.com.adnII.domain.entities.Company;
+import co.com.adnII.domain.repository.CompanyRepository;
+import co.com.adnII.infrastructure.persistence.jpa.context.CompanyExecutionContext;
 import play.db.jpa.JPAApi;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+import static java.util.concurrent.CompletableFuture.runAsync;
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 @Singleton
@@ -22,7 +21,6 @@ public class JPACompanyRepository implements CompanyRepository {
 
     private final JPAApi jpaApi;
     private final CompanyExecutionContext ec;
-    private final CircuitBreaker circuitBreaker = new CircuitBreaker().withFailureThreshold(1).withSuccessThreshold(3);
 
     @Inject
     public JPACompanyRepository(JPAApi api, CompanyExecutionContext ec) {
@@ -36,21 +34,12 @@ public class JPACompanyRepository implements CompanyRepository {
     }
 
     @Override
-    public CompletionStage<Company> create(Company company) {
-        return supplyAsync(() -> wrap(em -> insert(em, company)), ec);
-    }
-
-    @Override
-    public CompletionStage<Optional<Company>> find(Long id) {
-        return supplyAsync(() -> wrap(em -> Failsafe.with(circuitBreaker).get(() -> lookup(em, id))), ec);
+    public CompletionStage<Void> create(Company company) {
+        return runAsync(() -> wrap(em -> insert(em, company)), ec);
     }
 
     private <T> T wrap(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);
-    }
-
-    private Optional<Company> lookup(EntityManager em, Long id) {
-        return Optional.ofNullable(em.find(Company.class, id));
     }
 
     private Stream<Company> select(EntityManager em) {
