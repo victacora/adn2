@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { CreateCompanyComponent } from './createCompany/createCompany.component';
-import { ListCompanyComponent } from './listCompany/listCompany.component';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { ListCompanyComponent } from './components/list-company/list-company.component';
+
 
 @Component({
   selector: 'app-root',

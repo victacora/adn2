@@ -2,3 +2,8 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body { margin: 0; }
+
+.mat-card-header{
+    background-color: #3f51b53b;
+    margin-bottom: 10px;
+}

@@ -1,18 +1,18 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {LayoutModule} from '@angular/cdk/layout';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatProgressSpinnerModule, MatCardModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatButtonModule,
   MatSidenavModule, MatIconModule, MatListModule, MatDialogModule, MatTableModule, MatPaginatorModule, MatSortModule
 } from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {CreateCompanyComponent} from './createcompany/createcompany.component';
-import {DialogoComponent as DialogComponent} from './dialog/dialog.component';
-import {HttpClientModule} from '@angular/common/http';
-import { ListCompanyComponent } from './listCompany/listCompany.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateCompanyComponent } from './components/create-company/create-company.component';
+import { ListCompanyComponent } from './components/list-company/list-company.component';
+import { DialogComponent} from './components/dialog/dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -70,4 +70,4 @@ import { ListCompanyComponent } from './listCompany/listCompany.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

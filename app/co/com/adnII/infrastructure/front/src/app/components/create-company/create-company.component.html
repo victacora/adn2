@@ -1,0 +1,30 @@
+<mat-card id="createCompany">
+	<mat-card-header>
+		<mat-card-title>
+			<h1>Crear empresa</h1>
+		</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<form class="createcompany" #createcompanyfrm="ngForm">
+			<div fxLayout="column">
+				<label>NIT</label>
+				<mat-form-field> <input name="nit" matInput [(ngModel)]="company.nit" placeholder="Numero de indentificacion de la empresa"
+					 required>
+				</mat-form-field>
+				<label>Razon social</label>
+				<mat-form-field> <input name="name" matInput [(ngModel)]="company.name" placeholder="Razon social de la empresa"
+					 required>
+				</mat-form-field>
+				<label>Numero telefonico</label>
+				<mat-form-field> <input name="phone_number" matInput [(ngModel)]="company.phone_number" placeholder="Numero telefonico de la empresa">
+				</mat-form-field>
+				<label>Correo electronico</label>
+				<mat-form-field> <input name="email" matInput [(ngModel)]="company.email" type="email" placeholder="Correo electronico">
+				</mat-form-field>
+			</div>
+		</form>
+	</mat-card-content>
+	<mat-card-actions align="center">
+		<button mat-raised-button (click)="createCompany()" color="primary">Crear</button>
+	</mat-card-actions>
+</mat-card>

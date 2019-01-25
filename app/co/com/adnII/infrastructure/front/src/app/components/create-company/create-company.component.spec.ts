@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateCompanyComponent } from './createcompany.component';
+import { CreateCompanyComponent } from './create-company.component';
 
-describe('IngresarvehiculoComponent', () => {
+describe('CreateCompanyComponent', () => {
   let component: CreateCompanyComponent;
   let fixture: ComponentFixture<CreateCompanyComponent>;
 

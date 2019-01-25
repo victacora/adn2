@@ -1,17 +1,18 @@
-import { DialogoComponent } from '../dialog/dialog.component';
-import { Component, Output, EventEmitter, ViewChild,  AfterViewInit } from '@angular/core';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Component, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { CompaniesService } from '../service/companies.service';
-import { Company } from '../model/company';
+import { Company } from 'src/app/shared/model/company';
+import { CompaniesService } from 'src/app/shared/service/companies.service';
+
 
 @Component({
-  selector: 'app-createcompany',
-  templateUrl: './createcompany.component.html',
-  styleUrls: ['./createcompany.component.css']
+  selector: 'app-create-company',
+  templateUrl: './create-company.component.html',
+  styleUrls: ['./create-company.component.css']
 })
-export class CreateCompanyComponent implements AfterViewInit {
+export class CreateCompanyComponent {
 
-  private company: Company;
+  private company: Company = new Company();
 
   @ViewChild('createcompanyfrm') createcompanyfrm;
 
@@ -19,13 +20,9 @@ export class CreateCompanyComponent implements AfterViewInit {
 
   constructor(private dialog: MatDialog, private companiesService: CompaniesService) { }
 
- ngAfterViewInit() {
-    this.company = new Company();
-  }
-
   createCompany() {
     this.companiesService.createCompanies(this.company).subscribe(() => {
-      this.dialog.open(DialogoComponent, {
+      this.dialog.open(DialogComponent, {
         data: {
           title: 'Informacion',
           message: 'Entrada registrada correctamente.'
@@ -34,7 +31,7 @@ export class CreateCompanyComponent implements AfterViewInit {
       this.reload.emit();
       this.company = new Company();
     }, (error) => {
-      this.dialog.open(DialogoComponent, {
+      this.dialog.open(DialogComponent, {
         data: {
           title: 'Error',
           message: error.error.message

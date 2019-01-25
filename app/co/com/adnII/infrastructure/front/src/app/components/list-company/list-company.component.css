@@ -24,3 +24,13 @@ table {
 	align-items: center;
 	justify-content: center;
 }
+
+#companiesList{
+	margin: 5px;
+}
+
+#no-record{
+	text-align: center;
+	font-size: 1.5em;
+	margin: 5px;
+}
