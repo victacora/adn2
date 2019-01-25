@@ -4,15 +4,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "company")
-public class Company {
+public class CompanyEntity {
 
-    public Company() {
+    public CompanyEntity() {
     }
 
-    public Company(String nit,
-                   String name,
-                   String phoneNumber,
-                   String email) {
+    public CompanyEntity(String nit,
+                         String name,
+                         String phoneNumber,
+                         String email) {
         this.name = name;
         this.nit = nit;
         this.phoneNumber = phoneNumber;

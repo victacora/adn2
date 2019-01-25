@@ -3,6 +3,7 @@ package co.com.adnII.infrastructure.persistence.jpa.repository;
 import co.com.adnII.domain.entities.Company;
 import co.com.adnII.domain.repository.CompanyRepository;
 import co.com.adnII.infrastructure.persistence.jpa.context.CompanyExecutionContext;
+import co.com.adnII.infrastructure.persistence.jpa.entities.CompanyEntity;
 import play.db.jpa.JPAApi;
 
 import javax.inject.Inject;
@@ -43,13 +44,30 @@ public class JPACompanyRepository implements CompanyRepository {
     }
 
     private Stream<Company> select(EntityManager em) {
-        TypedQuery<Company> query = em.createQuery("SELECT c FROM Company c", Company.class);
-        return query.getResultList().stream();
+        TypedQuery<CompanyEntity> query = em.createQuery("SELECT c FROM CompanyEntity c",  CompanyEntity.class);
+        return query.getResultList().stream().map(c->convertToCompany(c));
     }
 
 
-    private Company insert(EntityManager em, Company Company) {
-        return em.merge(Company);
+    private CompanyEntity insert(EntityManager em, Company Company) {
+        return em.merge(convertToCompanyEntity(Company));
     }
 
+    private CompanyEntity convertToCompanyEntity(Company company){
+        CompanyEntity companyEntityEntity =new CompanyEntity();
+        companyEntityEntity.setNit(company.getNit());
+        companyEntityEntity.setName(company.getName());
+        companyEntityEntity.setEmail(company.getEmail());
+        companyEntityEntity.setPhoneNumber(company.getPhoneNumber());
+        return companyEntityEntity;
+    }
+
+    private Company convertToCompany(CompanyEntity company){
+       Company companyEntity=new Company();
+        companyEntity.setNit(company.getNit());
+        companyEntity.setName(company.getName());
+        companyEntity.setEmail(company.getEmail());
+        companyEntity.setPhoneNumber(company.getPhoneNumber());
+        return companyEntity;
+    }
 }

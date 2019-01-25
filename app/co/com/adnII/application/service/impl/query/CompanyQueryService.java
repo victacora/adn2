@@ -10,8 +10,12 @@ import java.util.stream.Stream;
 
 public class CompanyQueryService implements ICompanyQueryService {
 
-    @Inject
     private CompanyRepository companyRepository;
+
+    @Inject
+    public CompanyQueryService(CompanyRepository companyRepository){
+        this.companyRepository=companyRepository;
+    }
 
     @Override
     public CompletionStage<Stream<Company>> listCompanies() {

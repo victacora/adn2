@@ -47,6 +47,6 @@ public class IntegrationTest extends WithApplication {
                 .uri(URL_API);
 
         Result result = route(app, request);
-        assertEquals(CREATED, result.status());
+        assertEquals(OK, result.status());
     }
 }

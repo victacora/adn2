@@ -9,8 +9,13 @@ import java.util.concurrent.CompletionStage;
 
 public class CompanyCommandService implements ICompanyCommandService {
 
-    @Inject
+
     private CompanyRepository companyRepository;
+
+    @Inject
+    public CompanyCommandService(CompanyRepository companyRepository){
+        this.companyRepository=companyRepository;
+    }
 
     @Override
     public CompletionStage<Void> createCompany(Company company) {
