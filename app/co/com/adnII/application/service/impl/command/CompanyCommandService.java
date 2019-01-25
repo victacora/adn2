@@ -9,7 +9,6 @@ import java.util.concurrent.CompletionStage;
 
 public class CompanyCommandService implements ICompanyCommandService {
 
-
     private CompanyRepository companyRepository;
 
     @Inject

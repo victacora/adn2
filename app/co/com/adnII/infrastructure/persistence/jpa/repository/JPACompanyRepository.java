@@ -31,15 +31,15 @@ public class JPACompanyRepository implements CompanyRepository {
 
     @Override
     public CompletionStage<Stream<Company>> list() {
-        return supplyAsync(() -> wrap(em -> select(em)), ec);
+        return supplyAsync(() -> select(jpaApi.em()), ec);
     }
 
     @Override
     public CompletionStage<Void> create(Company company) {
-        return runAsync(() -> wrap(em -> insert(em, company)), ec);
+        return runAsync(() -> wrapTransaction(em -> insert(em, company)), ec);
     }
 
-    private <T> T wrap(Function<EntityManager, T> function) {
+    private <T> T wrapTransaction(Function<EntityManager, T> function) {
         return jpaApi.withTransaction(function);
     }
 

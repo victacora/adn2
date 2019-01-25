@@ -23,10 +23,10 @@ public class CompanyController extends Controller {
     private ICompanyCommandService iCompanyCommandService;
 
     @Inject
-    public CompanyController(HttpExecutionContext ec, ICompanyQueryService iCompanyQueryService,ICompanyCommandService iCompanyCommandService) {
+    public CompanyController(HttpExecutionContext ec, ICompanyQueryService iCompanyQueryService, ICompanyCommandService iCompanyCommandService) {
         this.ec = ec;
         this.iCompanyQueryService = iCompanyQueryService;
-        this.iCompanyCommandService=iCompanyCommandService;
+        this.iCompanyCommandService = iCompanyCommandService;
     }
 
     public CompletionStage<Result> list() {
@@ -45,14 +45,11 @@ public class CompanyController extends Controller {
     public CompletionStage<Result> create() {
         JsonNode json = request().body().asJson();
         final CompanyCreateCommandDTO companyCreateCommandDTO = Json.fromJson(json, CompanyCreateCommandDTO.class);
-         return iCompanyCommandService.createCompany(convertToCompany(companyCreateCommandDTO)).thenApplyAsync(voidResult->{
-             return ok("CompanyEntity created");
-         }, ec.current());
-
+        return iCompanyCommandService.createCompany(convertToCompany(companyCreateCommandDTO)).thenApplyAsync(voidResult -> ok("CompanyEntity created"), ec.current());
     }
 
-    private Company convertToCompany(CompanyCreateCommandDTO companyCreateCommandDTO){
-        Company company=new Company();
+    private Company convertToCompany(CompanyCreateCommandDTO companyCreateCommandDTO) {
+        Company company = new Company();
         company.setName(companyCreateCommandDTO.getName());
         company.setNit(companyCreateCommandDTO.getNit());
         company.setEmail(companyCreateCommandDTO.getEmail());

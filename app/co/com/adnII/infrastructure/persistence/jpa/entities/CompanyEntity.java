@@ -21,19 +21,18 @@ public class CompanyEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
     private Long id;
 
-    @Column(name = "NAME",length = 100)
+    @Column(length = 100)
     private String name;
 
-    @Column(name = "NIT",length = 20)
+    @Column(length = 20)
     private String nit;
 
-    @Column(name = "EMAIL",length = 100)
+    @Column(length = 100)
     private String email;
 
-    @Column(name = "PHONE_NUMBER",length = 20)
+    @Column(name = "phone_number",length = 20)
     private String phoneNumber;
 
     public Long getId() {
