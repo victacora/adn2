@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome",
-            "url": "http://gaps.local:8080/",
+            "url": "http://gaps.local:80/",
             "webRoot": "${workspaceRoot}"
         }
     ]
