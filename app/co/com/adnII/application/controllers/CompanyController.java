@@ -45,7 +45,7 @@ public class CompanyController extends Controller {
     public CompletionStage<Result> create() {
         JsonNode json = request().body().asJson();
         final CompanyCreateCommandDTO companyCreateCommandDTO = Json.fromJson(json, CompanyCreateCommandDTO.class);
-        return iCompanyCommandService.createCompany(convertToCompany(companyCreateCommandDTO)).thenApplyAsync(voidResult -> ok("CompanyEntity created"), ec.current());
+        return iCompanyCommandService.createCompany(convertToCompany(companyCreateCommandDTO)).thenApplyAsync(voidResult -> ok(), ec.current());
     }
 
     private Company convertToCompany(CompanyCreateCommandDTO companyCreateCommandDTO) {

@@ -2,6 +2,6 @@
 
 GET    /                     co.com.adnII.application.controllers.HomeController.index
 
-GET    /api/v1/companies                     co.com.adnII.application.controllers.CompanyController.list
+GET    /api/v1/companies/                     co.com.adnII.application.controllers.CompanyController.list
 
-POST   /api/v1/companies                     co.com.adnII.application.controllers.CompanyController.create
+POST   /api/v1/companies/                     co.com.adnII.application.controllers.CompanyController.create

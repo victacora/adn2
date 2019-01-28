@@ -8,7 +8,7 @@ import { Company } from '../model/company';
 })
 export class CompaniesService {
 
-  API_URL = 'http://localhost:9000/api/v1/companies';
+  API_URL = '/api/v1/companies';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,7 +17,7 @@ export class CompaniesService {
       (this.API_URL);
   }
 
-  createCompanies(company: Company) {
+  createCompanies(company: Company): Observable<any> {
     return this.httpClient.post(this.API_URL, company);
   }
 

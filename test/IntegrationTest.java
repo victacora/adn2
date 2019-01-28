@@ -16,7 +16,7 @@ import static play.test.Helpers.*;
 
 public class IntegrationTest extends WithApplication {
 
-    public static final String URL_API = "/api/v1/companies";
+    public static final String URL_API = "/api/v1/companies/";
 
     @Override
     protected Application provideApplication() {

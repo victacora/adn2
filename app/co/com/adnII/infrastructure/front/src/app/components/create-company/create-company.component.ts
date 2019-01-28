@@ -25,16 +25,17 @@ export class CreateCompanyComponent {
       this.dialog.open(DialogComponent, {
         data: {
           title: 'Informacion',
-          message: 'Entrada registrada correctamente.'
+          message: 'Empresa registrada correctamente.'
         }
       });
       this.reload.emit();
       this.company = new Company();
+      this.createcompanyfrm.reset();
     }, (error) => {
       this.dialog.open(DialogComponent, {
         data: {
           title: 'Error',
-          message: error.error.message
+          message: error.message
         }
       });
     });

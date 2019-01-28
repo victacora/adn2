@@ -13,9 +13,10 @@ import { CompaniesService } from 'src/app/shared/service/companies.service';
 export class ListCompanyComponent implements AfterViewInit {
 
   loading = true;
+
   companies: Company[] = [];
 
-  columsList = ['id', 'nit', 'name', 'phone_number', 'email'];
+  columnsToDisplay = ['id', 'nit', 'name', 'phone_number', 'email'];
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
